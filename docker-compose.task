@@ -1,0 +1,36 @@
+1. Install Docker
+ curl -fsSL https://get.docker.com -o get-docker.sh
+ sh get-docker.sh
+ docker --version
+2. Install Docker-compose
+ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+ sudo chmod +x /usr/local/bin/docker-compose
+ docker-compose --version
+3. Vim docker-compose
+ 
+ ---
+version: '3'
+services:
+ devserver:
+  image: jenkins/jenkins
+  ports:
+   - 7070:8080
+
+ qaserver:
+  image: tomee
+  ports:
+   - 8899:8080
+
+
+ prodserver:
+  image: nginx
+  ports:
+   - 8080:80
+...
+
+4. docker-compose up -d
+5. To check
+   54.91.109.125:7070  ( jenkins )
+   54.91.109.125:8899 ( Tomcat )
+   54.91.109.125:8080 ( nginx )
+
